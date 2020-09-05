@@ -21,6 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@test')->name('test');
 
 
+//Admin
+Route::get('/category/add', 'Admin\CategoryController@addCategory')->name('add-category');
+Route::post('/category/new', 'Admin\CategoryController@newCategory')->name('new-category');
+Route::get('/category/manage','Admin\CategoryController@manageCategory')->name('manage-category');
+Route::get('/category/edit/{id}','Admin\CategoryController@editCategory')->name('edit-category');
+Route::post('/category/update', 'Admin\CategoryController@updateCategory')->name('update-category');
+Route::post('/category/delete}','Admin\CategoryController@deleteCategory')->name('delete-category');
+
 //Student
 Route::get('/student/login', 'Student\AuthController@login')->name('student-login');
 Route::post('/student-login-process', 'Student\AuthController@loginProcess')->name('student-login-process');
@@ -39,3 +47,8 @@ Route::post('/teacher-registration-process', 'Teacher\AuthController@registerPro
 Route::post('/teacher/logout', 'Teacher\AuthController@logout')->name('teacher-logout');
 
 Route::get('/teacher/dashboard', 'Teacher\HomeController@index')->name('teacher-dashboard');
+Route::get('/teacher/category/','Teacher\HomeController@manageCategory')->name('teacher-category');
+Route::post('/teacher/category/', 'Teacher\HomeController@newCategory')->name('teacher-category-add');
+
+Route::get('/teacher/list/','Teacher\HomeController@teachersList')->name('teacher-list');
+Route::get('/teacher/category/details/{id}','Teacher\HomeController@teacherCategoryDetails')->name('teacher-category-details');
