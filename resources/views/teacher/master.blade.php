@@ -17,6 +17,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('')}}admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
 
 </head>
 
@@ -56,20 +60,19 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categories" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="{{route('teacher-category')}}"  aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Categories</span>
             </a>
             <div id="categories" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Categories:</h6>
                     <a class="collapse-item" href="{{route('teacher-category')}}">Choose your categories</a>
                 </div>
             </div>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#teachers" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="{{route('teacher-list')}}"  aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Teachers</span>
             </a>
@@ -77,6 +80,34 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Teachers:</h6>
                     <a class="collapse-item" href="{{route('teacher-list')}}">Click Here</a>
+                </div>
+            </div>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('teacher-proposal-list')}}"  aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Proposals</span>
+            </a>
+            <div id="teachers_proposal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{route('teacher-proposal-list')}}">Click Here</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#teachers_projects" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Projects</span>
+            </a>
+            <div id="teachers_projects" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{route('teacher-ongoing-projects')}}">Ongoing</a>
+                    <a class="collapse-item" href="{{route('teacher-completed-projects')}}">Completed</a>
+                    <a class="collapse-item" href="{{route('teacher-dropped-projects')}}">Dropped</a>
+                    <a class="collapse-item" href="{{route('teacher-all-projects')}}">Supervision History</a>
                 </div>
             </div>
         </li>
@@ -181,7 +212,7 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                {{--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
@@ -190,7 +221,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form>--}}
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -405,7 +436,7 @@
                 <a class="btn btn-primary" href="#" onclick="event.preventDefault();document.getElementById('logoutForm').submit();">Logout</a>
                 <form id="logoutForm" action="{{route('teacher-logout')}}" method="post">
                     @csrf
-                    <input type="hidden" name="student_id" value="{{Session::get('teacher_id')}}">
+                    <input type="hidden" name="teacher_id" value="{{Session::get('teacher_id')}}">
                 </form>
             </div>
         </div>

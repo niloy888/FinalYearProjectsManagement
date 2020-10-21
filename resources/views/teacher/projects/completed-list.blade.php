@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Teachers</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Completed Projects</h6>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -23,27 +23,31 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Teacher Name</th>
-                        <th>Action</th>
+                        <th>Name</th>
+                        <th>Student ID</th>
+                        <th>Project Name</th>
+                        <th>Category</th>
+                        <th>Marks</th>
+                        <th>Starting Date</th>
+                        <th>Completion Date</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Teacher Name</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
+
                     <tbody>
                     @php($i=1)
-                    @foreach($teachers as $teacher)
+                    @foreach($projects as $project)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$teacher->teacher_name}}</td>
-                            <td>
-                                <a href="{{route('teacher-category-details',['id'=>$teacher->id])}}"  class="btn btn-success">Details</a>
-                            </td>
+                            <td>{{$project->student_name}}</td>
+                            <td>{{$project->student_id}}</td>
+                            <td>{{$project->project_name}}</td>
+                            <td>{{$project->category_name}}</td>
+                            <td>{{$project->marks}}</td>
+                            <td>{{$project->created_at}}</td>
+                            <td>{{$project->updated_at}}</td>
+
                         </tr>
+
                     @endforeach
                     </tbody>
                 </table>
@@ -53,5 +57,8 @@
 
     {{--</div>--}}
     <!-- /.container-fluid -->
+
+
+
 
 @endsection

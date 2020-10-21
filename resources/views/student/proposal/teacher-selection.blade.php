@@ -1,4 +1,4 @@
-@extends ('teacher.master')
+@extends ('student.master')
 
 @section('body')
 
@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Teachers</h6>
+            <h3 class="m-0 font-weight-bold text-primary">Step 2: Choose Your Supervisor</h3>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -23,14 +23,14 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Teacher Name</th>
+                        <th>Teacher</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Teacher Name</th>
+                        <th>Teacher</th>
                         <th>Action</th>
                     </tr>
                     </tfoot>
@@ -41,7 +41,7 @@
                             <td>{{$i++}}</td>
                             <td>{{$teacher->teacher_name}}</td>
                             <td>
-                                <a href="{{route('teacher-category-details',['id'=>$teacher->id])}}"  class="btn btn-success">Details</a>
+                                <a href="{{route('fill-up-proposal',['id'=>$teacher->id])}}"  class="btn btn-success">Select</a>
                             </td>
                         </tr>
                     @endforeach

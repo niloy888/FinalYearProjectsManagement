@@ -70,7 +70,7 @@ class AuthController extends Controller
     {
 
 
-        Session::forget($request->teacher_id);
+        Session::forget('teacher_id');
         /* Session::forget('student_id');
          Session::forget('student_id_varsity');
          Session::forget('student_name');

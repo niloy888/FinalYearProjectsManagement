@@ -29,7 +29,7 @@ Route::get('/category/edit/{id}','Admin\CategoryController@editCategory')->name(
 Route::post('/category/update', 'Admin\CategoryController@updateCategory')->name('update-category');
 Route::post('/category/delete}','Admin\CategoryController@deleteCategory')->name('delete-category');
 
-//Student
+//Student-------------------------------------------------------------------------------------------------------------
 Route::get('/student/login', 'Student\AuthController@login')->name('student-login');
 Route::post('/student-login-process', 'Student\AuthController@loginProcess')->name('student-login-process');
 Route::get('/student/register', 'Student\AuthController@register')->name('student-register');
@@ -38,8 +38,27 @@ Route::post('/student/logout', 'Student\AuthController@logout')->name('student-l
 
 Route::get('/student/dashboard', 'Student\HomeController@index')->name('student-dashboard');
 
+//Sending proposal
+Route::get('/category/selection', 'Student\ProposalController@categorySelection')->name('category-selection');
+Route::get('/teacher/selection/{id}', 'Student\ProposalController@teacherSelection')->name('teacher-selection');
+Route::get('/proposal/fill-up/{id}', 'Student\ProposalController@proposalFillUp')->name('fill-up-proposal');
+Route::post('/submit-proposal', 'Student\ProposalController@submitProposal')->name('submit-proposal');
+Route::get('/proposal/status', 'Student\ProposalController@proposalStatus')->name('proposal-status');
 
-//Teacher
+
+//Project
+Route::get('/project/status', 'Student\ProjectController@projectStatus')->name('project-status');
+
+
+//All Projects Search
+Route::get('/projects/all', 'Student\ProjectController@allProjects')->name('student-all-projects');
+
+Route::post('/autocomplete/project','AutoCompleteController@projectName')->name('autocomplete.project');
+
+Route::post('/final-project','Student\ProjectController@searchedProject')->name('final-project');
+
+
+//Teacher-------------------------------------------------------------------------------------------------------
 Route::get('/teacher/login', 'Teacher\AuthController@login')->name('teacher-login');
 Route::post('/teacher-login-process', 'Teacher\AuthController@loginProcess')->name('teacher-login-process');
 Route::get('/teacher/register', 'Teacher\AuthController@register')->name('teacher-register');
@@ -52,3 +71,19 @@ Route::post('/teacher/category/', 'Teacher\HomeController@newCategory')->name('t
 
 Route::get('/teacher/list/','Teacher\HomeController@teachersList')->name('teacher-list');
 Route::get('/teacher/category/details/{id}','Teacher\HomeController@teacherCategoryDetails')->name('teacher-category-details');
+
+
+//Proposals
+Route::get('/teacher/proposals/','Teacher\ProposalController@proposalList')->name('teacher-proposal-list');
+Route::get('/teacher/proposal/{id}','Teacher\ProposalController@proposalDetails')->name('teacher-proposal-details');
+Route::post('/accept/proposal/','Teacher\ProposalController@acceptProposal')->name('accept-proposal');
+Route::post('/cancel/proposal/','Teacher\ProposalController@cancelProposal')->name('cancel-proposal');
+
+
+//Projects
+Route::get('/teacher/projects/ongoing','Teacher\ProjectController@ongoingProjects')->name('teacher-ongoing-projects');
+Route::post('/teacher/project/completed','Teacher\ProjectController@projectCompleted')->name('project-completed');
+Route::post('/teacher/project/drop','Teacher\ProjectController@projectDrop')->name('cancel-project');
+Route::get('/teacher/projects/completed','Teacher\ProjectController@completedProjects')->name('teacher-completed-projects');
+Route::get('/teacher/projects/dropped','Teacher\ProjectController@droppedProjects')->name('teacher-dropped-projects');
+Route::get('/teacher/projects/history','Teacher\ProjectController@supervisionHistory')->name('teacher-all-projects');

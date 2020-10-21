@@ -1,4 +1,4 @@
-@extends ('teacher.master')
+@extends ('student.master')
 
 @section('body')
 
@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Teachers</h6>
+            <h3 class="m-0 font-weight-bold text-primary">Step 1: Choose Your Project Category</h3>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -23,25 +23,25 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Teacher Name</th>
+                        <th>Project Category</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Teacher Name</th>
+                        <th>Project Category</th>
                         <th>Action</th>
                     </tr>
                     </tfoot>
                     <tbody>
                     @php($i=1)
-                    @foreach($teachers as $teacher)
+                    @foreach($categories as $category)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$teacher->teacher_name}}</td>
+                            <td>{{$category->category_name}}</td>
                             <td>
-                                <a href="{{route('teacher-category-details',['id'=>$teacher->id])}}"  class="btn btn-success">Details</a>
+                                <a href="{{route('teacher-selection',['id'=>$category->id])}}"  class="btn btn-success">Select</a>
                             </td>
                         </tr>
                     @endforeach

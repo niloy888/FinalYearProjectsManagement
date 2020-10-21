@@ -1,4 +1,4 @@
-@extends ('teacher.master')
+@extends ('student.master')
 
 @section('body')
 
@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Teachers</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Proposal Status</h6>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -22,27 +22,31 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>No</th>
                         <th>Teacher Name</th>
-                        <th>Action</th>
+                        <th>Project Name</th>
+                        <th>Category Name</th>
+                        <th>Message</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Teacher Name</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
+
                     <tbody>
-                    @php($i=1)
-                    @foreach($teachers as $teacher)
+                    @foreach($proposals as $proposal)
                         <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$teacher->teacher_name}}</td>
+                            <td>{{$proposal->teacher_name}}</td>
+                            <td>{{$proposal->project_name}}</td>
+                            <td>{{$proposal->category_name}}</td>
+                            <td>{{$proposal->message}}</td>
                             <td>
-                                <a href="{{route('teacher-category-details',['id'=>$teacher->id])}}"  class="btn btn-success">Details</a>
+                                @if($proposal->proposal_status==0)
+                                    Pending
+                                @elseif($proposal->proposal_status==1)
+                                    Accepted
+                                @else
+                                    Cancelled
+                                @endif
                             </td>
+
                         </tr>
                     @endforeach
                     </tbody>

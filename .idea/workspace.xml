@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d8c39f9-af44-486f-8afe-fad88ecdbf03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/home/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/home/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/teachers/teacher-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/teachers/teacher-list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -132,7 +126,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
@@ -168,6 +162,7 @@
       <workItem from="1597589182658" duration="4864000" />
       <workItem from="1597672713305" duration="20130000" />
       <workItem from="1598718611061" duration="60000" />
+      <workItem from="1602440455940" duration="47719000" />
     </task>
     <servers />
   </component>
