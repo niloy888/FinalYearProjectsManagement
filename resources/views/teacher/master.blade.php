@@ -45,7 +45,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{route('teacher-dashboard')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -108,6 +108,7 @@
                     <a class="collapse-item" href="{{route('teacher-completed-projects')}}">Completed</a>
                     <a class="collapse-item" href="{{route('teacher-dropped-projects')}}">Dropped</a>
                     <a class="collapse-item" href="{{route('teacher-all-projects')}}">Supervision History</a>
+                    <a class="collapse-item" href="{{route('university-all-projects')}}">University All Projects</a>
                 </div>
             </div>
         </li>
@@ -361,7 +362,7 @@
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{route('teacher-profile')}}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>

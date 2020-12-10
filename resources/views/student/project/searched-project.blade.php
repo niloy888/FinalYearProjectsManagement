@@ -32,8 +32,7 @@
                     <tr>
                         <th>Project Name</th>
                         <th>Teacher Name</th>
-                        <th>Student Name</th>
-                        <th>Student ID</th>
+                        <th>Group ID</th>
                         <th>Category Name</th>
                         <th>Starting Date</th>
                         <th>Ending Date</th>
@@ -46,8 +45,7 @@
                             <td>{{$project->project_name}}</td>
 
                             <td>{{$project->teacher_name}}</td>
-                            <td>{{$project->student_name}}</td>
-                            <td>{{$project->student_id}}</td>
+                            <td>{{$project->group_id}}</td>
                             <td>{{$project->category_name}}</td>
                             <td>{{$project->created_at}}</td>
                             <td>{{$project->updated_at}}</td>

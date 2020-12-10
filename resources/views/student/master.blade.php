@@ -61,19 +61,44 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
+        @if(empty($project_id))
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#final_year_projects" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#enroll_project" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>My Project</span>
+                <span>Enroll Project</span>
             </a>
-            <div id="final_year_projects" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="enroll_project" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
+                    @if(empty($group_id->group_id))
+                    <a class="collapse-item" href="{{route('create-group')}}">Create a Group</a>
+                    @endif
                     <a class="collapse-item" href="{{route('category-selection')}}">Send Proposal</a>
                     <a class="collapse-item" href="{{route('proposal-status')}}">Proposal Status</a>
-                    <a class="collapse-item" href="{{route('project-status')}}">Project Status</a>
                 </div>
             </div>
         </li>
+
+            @else
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#final_year_projects" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>My Project</span>
+                </a>
+                <div id="final_year_projects" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('project-status')}}">Project Status</a>
+                        <a class="collapse-item" href="{{route('student-task-add')}}">Add Project Task</a>
+                        <a class="collapse-item" href="{{route('student-task-list')}}">My Tasks</a>
+                        <a class="collapse-item" href="{{route('project-submission')}}">Submit Project</a>
+                        <a class="collapse-item" href="{{route('submission-status')}}">Submission Status</a>
+                    </div>
+                </div>
+            </li>
+
+        @endif
+
+
 
 
         <li class="nav-item">

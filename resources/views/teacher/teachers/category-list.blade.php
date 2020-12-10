@@ -38,7 +38,18 @@
                 @endforeach
             </ul>
 
+
+            <b>Ongoing Projects:</b>
+            <br>
+
+            <ul class="mt-2">
+                @foreach($projects as $project)
+                    <li>{{$project->project_name}}</li>
+                @endforeach
+            </ul>
         </div>
+
+
     </div>
 
     {{--</div>--}}

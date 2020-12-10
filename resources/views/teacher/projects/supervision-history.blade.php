@@ -23,8 +23,7 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Student ID</th>
+                        <th>Group ID</th>
                         <th>Project Name</th>
                         <th>Category</th>
                         <th>Marks</th>
@@ -39,8 +38,7 @@
                     @foreach($projects as $project)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$project->student_name}}</td>
-                            <td>{{$project->student_id}}</td>
+                            <td>{{$project->group_id}}</td>
                             <td>{{$project->project_name}}</td>
                             <td>{{$project->category_name}}</td>
                             <td>{{$project->marks}}</td>

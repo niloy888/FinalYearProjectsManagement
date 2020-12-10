@@ -51,6 +51,9 @@
                                         <input type="text" name="student_contact_number" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Contact Number...">
                                     </div>
                                     <div class="form-group">
+                                        <input type="text" name="batch" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Batch...">
+                                    </div>
+                                    <div class="form-group">
                                         <input type="email" name="student_email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address...">
                                     </div>
                                     <div class="form-group">

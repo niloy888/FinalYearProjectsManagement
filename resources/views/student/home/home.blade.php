@@ -1,4 +1,4 @@
 @extends('student.master')
-@section('body')
 
+@section('body')
 @endsection

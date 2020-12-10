@@ -23,12 +23,12 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Student Name</th>
-                        <th>Student ID</th>
+                        <th>Group ID</th>
                         <th>Project Name</th>
                         <th>Category Name</th>
                         <th>Message</th>
-                        <th>Action</th>
+                        <th>Group Details</th>
+                        <th>Project Details</th>
                     </tr>
                     </thead>
 
@@ -37,13 +37,16 @@
                     @foreach($proposals as $proposal)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$proposal->student_name}}</td>
-                            <td>{{$proposal->student_id}}</td>
+                            <td>{{$proposal->group_id}}</td>
                             <td>{{$proposal->project_name}}</td>
                             <td>{{$proposal->category_name}}</td>
                             <td>{{$proposal->message}}</td>
                             <td>
-                                <a href="{{route('teacher-proposal-details',['id'=>$proposal->id])}}"  class="btn btn-success">Details</a>
+                                <a href="{{route('proposal-group-details',['id'=>$proposal->id])}}"  class="btn  btn-primary">Click Here</a>
+                            </td>
+                            <td>
+                                <a href="{{route('teacher-proposal-details',['id'=>$proposal->id])}}"  class="btn  btn-success">Click Here</a>
+
                             </td>
                         </tr>
                     @endforeach

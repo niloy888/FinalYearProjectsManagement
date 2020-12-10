@@ -1,4 +1,4 @@
-@extends ('student.master')
+@extends ('teacher.master')
 
 @section('body')
 
@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
 
     <div style="display: inline-block">
-        <form action="{{route('final-project')}}" method="post"
+        <form action="{{route('teacher-final-project')}}" method="post"
               class="d-none d-sm-inline-block form-inline mr-auto  my-2 my-md-0 mw-100 navbar-search">
             @csrf
             <div class="input-group">

@@ -24,6 +24,7 @@ class AuthController extends Controller
         $student = new Student();
         $student->student_name = $request->student_name;
         $student->student_id = $request->student_id;
+        $student->batch = $request->batch;
         $student->student_email = $request->student_email;
         $student->password = bcrypt($request->password);
         $student->student_contact_number = $request->student_contact_number;

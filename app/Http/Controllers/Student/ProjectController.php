@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Model\Project;
+use App\Model\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
@@ -13,28 +15,35 @@ class ProjectController extends Controller
     {
         $student_id = Session::get('student_id');
 
+        $student = Student::find($student_id);
+
+        $group_id = Project::where('group_id',$student->group_id)->orderBy('id','desc')->first();
+
+
+
+
         $projects = DB::table('projects')
-            ->join('students', 'students.id', '=', 'projects.student_id')
             ->join('categories', 'categories.id', '=', 'projects.category_id')
             ->join('teachers', 'teachers.id', '=', 'projects.teacher_id')
-            ->where('projects.student_id', $student_id)
+            ->where('projects.group_id', $student->group_id)
             ->select('projects.*', 'categories.category_name', 'teachers.teacher_name')
             ->get();
 
 
         return view('student.project.project-status', [
-            'projects' => $projects
+            'projects' => $projects,
+            'group_id' => $group_id,
+
         ]);
     }
 
     public function allProjects()
     {
         $projects = DB::table('projects')
-            ->join('students', 'students.id', '=', 'projects.student_id')
             ->join('categories', 'categories.id', '=', 'projects.category_id')
             ->join('teachers', 'teachers.id', '=', 'projects.teacher_id')
             ->where('projects.project_status', 1)
-            ->select('projects.*', 'students.student_name', 'students.student_id', 'categories.category_name', 'teachers.teacher_name')
+            ->select('projects.*',  'categories.category_name', 'teachers.teacher_name')
             ->get();
 
 
@@ -46,16 +55,19 @@ class ProjectController extends Controller
     public function searchedProject(Request $request)
     {
         $projects = DB::table('projects')
-            ->join('students', 'students.id', '=', 'projects.student_id')
             ->join('categories', 'categories.id', '=', 'projects.category_id')
             ->join('teachers', 'teachers.id', '=', 'projects.teacher_id')
             ->where('projects.project_name','=' ,$request->project_name)
-            ->select('projects.*', 'students.student_name', 'students.student_id', 'categories.category_name', 'teachers.teacher_name')
+            ->select('projects.*',  'categories.category_name', 'teachers.teacher_name')
             ->get();
 
 
         return view('student.project.searched-project', [
             'projects' => $projects
         ]);
+    }
+
+    public function googleSearch(Request $request){
+        return redirect('https://www.google.com/search?q='.$request->project_name);
     }
 }

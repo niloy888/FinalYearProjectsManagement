@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\CategoryWiseTeacher;
 use App\Model\Category;
+use App\Model\Project;
 use App\Model\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,20 @@ class HomeController extends Controller
 {
     public function index(){
         return view('teacher.home.home');
+    }
+
+    public function profile(){
+        $teacher = Teacher::find(Session::get('teacher_id'));
+
+        return view('teacher.home.profile',compact('teacher'));
+    }
+
+    public function submitAvailability(Request $request){
+        $teacher = Teacher::find(Session::get('teacher_id'));
+        $teacher->availability = $request->availability;
+        $teacher->save();
+        return redirect()->back()->with('message','Availability Updated Successfully');
+
     }
 
     public function manageCategory(){
@@ -65,11 +80,14 @@ class HomeController extends Controller
             ->select('teachers.*','categories.category_name')
             ->get();
 
+        $projects = Project::where('teacher_id',$id)->where('project_status',0)->get();
+
         //return $categoryList;
 
         return view('teacher.teachers.category-list',[
             'categoryList' => $categoryList,
-            'teacher' => $teacher
+            'teacher' => $teacher,
+            'projects' => $projects,
         ]);
     }
 }

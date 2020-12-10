@@ -6,7 +6,7 @@
             <div class="well">
 
                 <h3 class="text-center text-success"> {{Session::get('message')}} </h3>
-                <form action="{{route('submit-proposal')}}" method="post" class="form-horizontal">
+                <form action="{{route('submit-proposal')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label class="control-label col-md-3">Project name</label>
@@ -27,7 +27,15 @@
                     <div class="form-group">
                         <label class="control-label col-md-3">Message</label>
                         <div class="col-md-6">
-                            <textarea rows="5" cols="60" placeholder="write something why you want to be supervised under the teacher.." name="message"></textarea>
+                            <textarea rows="5" cols="60"  name="message"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Proposal Report</label>
+                        <div class="col-md-6">
+                            <input type="file" name="report" class="form-control">
+
 
                         </div>
                     </div>

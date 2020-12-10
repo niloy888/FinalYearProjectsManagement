@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Ongoing Projects</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Task List</h6>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -23,65 +23,43 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Group ID</th>
-                        <th>Project Name</th>
-                        <th>Category Name</th>
-                        <th>Remaining</th>
+                        <th>Description</th>
+                        <th>Github Link</th>
+                        <th>Date</th>
+                        <th>Marks</th>
                         <th>Action</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     @php($i=1)
-                    @foreach($projects as $project)
-                        <input type="hidden" value="{{$from = \Carbon\Carbon::now()}}">
-                        <input type="hidden" value="{{$to = \Carbon\Carbon::parse($project->deadline)}}">
-                        <input type="hidden" value="{{$days = $from->diffInDays($to)}}">
-                        <input type="hidden" value="{{$months = $from->diffInMonths($to)}}">
-
+                    @foreach($tasks as $task)
                         <tr>
-
-
-
                             <td>{{$i++}}</td>
-                            <td>{{$project->group_id}}</td>
-                            <td>{{$project->project_name}}</td>
-                            <td>{{$project->category_name}}</td>
-                            <td>{{$months}} months || {{$days}} days</td>
+                            <td>{{$task->task_description}}</td>
+                            <td><a href="{{$task->github_link}}">{{$task->github_link}}</a></td>
+                            <td>{{$task->created_at}}</td>
+                            <td>{{$task->task_mark}}</td>
+
                             <td>
-                                {{--<a href="#" class="btn btn-success modalButton"
-                                   data-report-id={{$project->id}}  data-toggle="modal"
-                                   data-target="#exampleModal">Completed</a>--}}
-                                <a href="#" class="btn btn-danger"
-                                   onclick="event.preventDefault();
-                                       var check = confirm('Are you sure?');
-                                       if(check){
-                                       document.getElementById('cancelProject'+'{{$project->id}}').submit();
-                                       }">Drop</a>
 
-                                <a href="{{route('project-task',['id'=>$project->group_id])}}" class="btn btn-primary">Tasks</a>
-                                @if($project->project_submission==1)
-                                <a href="{{route('final-submission',['id'=>$project->group_id])}}" class="btn btn-warning">Submission</a>
-                                @endif
+                                <a href="{{route('task-images',['id'=>$task->id])}}" class="btn btn-primary">View Images</a>
 
-                                <form id="cancelProject{{$project->id}}"
-                                      action="{{route('cancel-project')}}" method="post">
-                                    @csrf
+                                @if($task->task_mark==null)
+                                <a href="#" class="btn btn-success modalButton"
+                                   data-report-id={{$task->id}}  data-toggle="modal"
+                                   data-target="#exampleModal">Give Mark</a>
 
-                                    <input type="hidden" name="id" value="{{$project->id}}">
-
-                                </form>
+                                    @endif
 
                             </td>
                         </tr>
 
-
-                        <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <form action="{{route('project-completed')}}" method="post">
+                                    <form action="{{route('task-mark')}}" method="post">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Are you sure to
                                                 proceed?</h5>
@@ -94,7 +72,7 @@
                                             @csrf
                                             <input type="hidden" id="reportIdInput" name="id">
 
-                                            <input type="text" name="marks" placeholder="Enter marks here">
+                                            <input type="text" name="task_mark" placeholder="Enter marks here">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -109,6 +87,8 @@
                         </div>
 
 
+
+
                     @endforeach
                     </tbody>
                 </table>
@@ -118,8 +98,6 @@
 
     {{--</div>--}}
     <!-- /.container-fluid -->
-
-
     <script>
 
         $('.modalButton').click(function () {
@@ -130,6 +108,7 @@
 
 
     </script>
+
 
 
 @endsection

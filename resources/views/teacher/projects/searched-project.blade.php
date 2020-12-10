@@ -11,9 +11,17 @@
 --}}
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+
+
+
+    <div class="mt-3 card shadow mb-4" style="position: fixed">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Dropped Projects</h6>
+
+
+
+
+
+            <h6 class="m-0 font-weight-bold text-primary">Final Project</h6>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -22,28 +30,28 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Group ID</th>
                         <th>Project Name</th>
-                        <th>Category</th>
+                        <th>Teacher Name</th>
+                        <th>Group ID</th>
+                        <th>Category Name</th>
                         <th>Starting Date</th>
-                        <th>Dropped Date</th>
+                        <th>Ending Date</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    @php($i=1)
                     @foreach($projects as $project)
                         <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$project->group_id}}</td>
                             <td>{{$project->project_name}}</td>
+
+                            <td>{{$project->teacher_name}}</td>
+                            <td>{{$project->group_id}}</td>
                             <td>{{$project->category_name}}</td>
                             <td>{{$project->created_at}}</td>
                             <td>{{$project->updated_at}}</td>
 
-                        </tr>
 
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>
@@ -58,3 +66,5 @@
 
 
 @endsection
+
+

@@ -38,6 +38,11 @@ Route::post('/student/logout', 'Student\AuthController@logout')->name('student-l
 
 Route::get('/student/dashboard', 'Student\HomeController@index')->name('student-dashboard');
 
+//Make a group
+Route::get('/group/create', 'Student\GroupController@createGroup')->name('create-group');
+Route::post('/group/submit', 'Student\GroupController@submitGroup')->name('submit-group');
+
+
 //Sending proposal
 Route::get('/category/selection', 'Student\ProposalController@categorySelection')->name('category-selection');
 Route::get('/teacher/selection/{id}', 'Student\ProposalController@teacherSelection')->name('teacher-selection');
@@ -49,6 +54,15 @@ Route::get('/proposal/status', 'Student\ProposalController@proposalStatus')->nam
 //Project
 Route::get('/project/status', 'Student\ProjectController@projectStatus')->name('project-status');
 
+Route::get('/project/task/add', 'Student\TaskController@addTask')->name('student-task-add');
+Route::post('/project/task/submit', 'Student\TaskController@submitTask')->name('student-task-submit');
+
+Route::get('/project/task/list', 'Student\TaskController@taskList')->name('student-task-list');
+
+Route::get('/project/submit', 'Student\TaskController@projectSubmission')->name('project-submission');
+Route::post('/project/submit', 'Student\TaskController@submitProject')->name('submit-project');
+Route::get('/submission/status', 'Student\TaskController@submissionStatus')->name('submission-status');
+
 
 //All Projects Search
 Route::get('/projects/all', 'Student\ProjectController@allProjects')->name('student-all-projects');
@@ -56,6 +70,8 @@ Route::get('/projects/all', 'Student\ProjectController@allProjects')->name('stud
 Route::post('/autocomplete/project','AutoCompleteController@projectName')->name('autocomplete.project');
 
 Route::post('/final-project','Student\ProjectController@searchedProject')->name('final-project');
+
+Route::post('/google-search','Student\ProjectController@googleSearch')->name('google-search');
 
 
 //Teacher-------------------------------------------------------------------------------------------------------
@@ -66,24 +82,43 @@ Route::post('/teacher-registration-process', 'Teacher\AuthController@registerPro
 Route::post('/teacher/logout', 'Teacher\AuthController@logout')->name('teacher-logout');
 
 Route::get('/teacher/dashboard', 'Teacher\HomeController@index')->name('teacher-dashboard');
+Route::get('/teacher/profile', 'Teacher\HomeController@profile')->name('teacher-profile');
+Route::post('/teacher/available', 'Teacher\HomeController@submitAvailability')->name('submit-availability');
 Route::get('/teacher/category/','Teacher\HomeController@manageCategory')->name('teacher-category');
 Route::post('/teacher/category/', 'Teacher\HomeController@newCategory')->name('teacher-category-add');
 
 Route::get('/teacher/list/','Teacher\HomeController@teachersList')->name('teacher-list');
-Route::get('/teacher/category/details/{id}','Teacher\HomeController@teacherCategoryDetails')->name('teacher-category-details');
+Route::get('/teacher/details/{id}','Teacher\HomeController@teacherCategoryDetails')->name('teacher-category-details');
 
 
 //Proposals
 Route::get('/teacher/proposals/','Teacher\ProposalController@proposalList')->name('teacher-proposal-list');
 Route::get('/teacher/proposal/{id}','Teacher\ProposalController@proposalDetails')->name('teacher-proposal-details');
+Route::get('/teacher/proposal/group/{id}','Teacher\ProposalController@groupDetails')->name('proposal-group-details');
+Route::get('/report/download/{id}','Teacher\ProposalController@reportDownload')->name('teacher-report-download');
 Route::post('/accept/proposal/','Teacher\ProposalController@acceptProposal')->name('accept-proposal');
 Route::post('/cancel/proposal/','Teacher\ProposalController@cancelProposal')->name('cancel-proposal');
 
 
 //Projects
 Route::get('/teacher/projects/ongoing','Teacher\ProjectController@ongoingProjects')->name('teacher-ongoing-projects');
+Route::get('/teacher/project/task/{id}','Teacher\TaskController@projectTask')->name('project-task');
+Route::get('/teacher/task/images/{id}','Teacher\TaskController@taskImages')->name('task-images');
+Route::post('/teacher/task/mark/','Teacher\TaskController@taskMark')->name('task-mark');
 Route::post('/teacher/project/completed','Teacher\ProjectController@projectCompleted')->name('project-completed');
 Route::post('/teacher/project/drop','Teacher\ProjectController@projectDrop')->name('cancel-project');
 Route::get('/teacher/projects/completed','Teacher\ProjectController@completedProjects')->name('teacher-completed-projects');
 Route::get('/teacher/projects/dropped','Teacher\ProjectController@droppedProjects')->name('teacher-dropped-projects');
 Route::get('/teacher/projects/history','Teacher\ProjectController@supervisionHistory')->name('teacher-all-projects');
+
+
+Route::get('/teacher/final-submission/{id}','Teacher\ProjectController@finalSubmission')->name('final-submission');
+
+Route::get('/final-report/download/{id}','Teacher\ProjectController@finalReportDownload')->name('final-report-download');
+Route::get('/project-folder/download/{id}','Teacher\ProjectController@projectFolderDownload')->name('project-folder-download');
+Route::post('/teacher/final-report/mark/','Teacher\ProjectController@finalReportMark')->name('final-report-mark');
+
+
+
+Route::get('/teacher/projects/', 'Teacher\ProjectController@allProjects')->name('university-all-projects');
+Route::post('/teacher/final-project','Teacher\ProjectController@searchedProject')->name('teacher-final-project');

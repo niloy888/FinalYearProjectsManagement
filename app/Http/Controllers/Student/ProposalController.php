@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Student;
 
 use App\Model\Category;
+use App\Model\Group;
 use App\Model\Proposal;
+use App\Model\Student;
 use App\Model\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +32,8 @@ class ProposalController extends Controller
 
             ->join('category_wise_teachers','teachers.id','=','category_wise_teachers.teacher_id')
             ->where('category_wise_teachers.category_id',$id)
-            ->where('teachers.slots','<',5)
+//            ->where('teachers.slots','<',5)
+            ->where('teachers.availability',1)
             ->select('teachers.*')
             ->orderBy('teachers.teacher_position','asc')
             ->get();
@@ -47,16 +50,31 @@ class ProposalController extends Controller
 
     public function submitProposal(Request $request){
 
+        $request->validate([
+            'report' => 'required|mimes:pdf,xlx,csv',
+        ]);
+
+        $fileName = time().'.'.$request->report->extension();
+        $request->report->move(public_path('reports'), $fileName);
+
+
+        $student = Student::where('id',$request->student_id)->first();
+
+
         $proposal = new Proposal();
-        $proposal->student_id        = $request->student_id;
+        $proposal->group_id          = $student->group_id;
         $proposal->category_id       = $request->category_id;
         $proposal->teacher_id        = $request->teacher_id;
         $proposal->project_name      = $request->project_name;
         $proposal->short_description = $request->short_description;
         $proposal->proposal_status   = 0;
         $proposal->message           = $request->message;
+        $proposal->report            = $fileName;
 
         $proposal->save();
+
+        //$proposal = Proposal::orderBy('id','desc')->first();
+
 
         return back()->with('message','Project proposal sent successfully!!');
 
@@ -65,12 +83,14 @@ class ProposalController extends Controller
     public function proposalStatus(){
         $student_id = Session::get('student_id');
 
+        $student = Student::where('id',$student_id)->first();
+        $group_id = $student->group_id;
+
         $proposals = DB::table('proposals')
 
-            ->join('students','students.id','=','proposals.student_id')
             ->join('categories','categories.id','=','proposals.category_id')
             ->join('teachers','teachers.id','=','proposals.teacher_id')
-            ->where('proposals.student_id',$student_id)
+            ->where('proposals.group_id',$group_id)
             ->select('proposals.*','categories.category_name','teachers.teacher_name')
             ->get();
 

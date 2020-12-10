@@ -13,7 +13,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Dropped Projects</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Task Images</h6>
             <h3 class="text-center text-success">{{Session::get('message')}}</h3>
         </div>
         <div class="card-body">
@@ -23,26 +23,21 @@
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Group ID</th>
-                        <th>Project Name</th>
-                        <th>Category</th>
-                        <th>Starting Date</th>
-                        <th>Dropped Date</th>
+                        <th>Image</th>
+
                     </tr>
                     </thead>
 
                     <tbody>
                     @php($i=1)
-                    @foreach($projects as $project)
+                    @foreach($taskImages as $image)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$project->group_id}}</td>
-                            <td>{{$project->project_name}}</td>
-                            <td>{{$project->category_name}}</td>
-                            <td>{{$project->created_at}}</td>
-                            <td>{{$project->updated_at}}</td>
+                            <td><img class="img-full img-responsive" src="{{asset($image->task_image)}}"
+                                     alt="shop"></td>
 
                         </tr>
+
 
                     @endforeach
                     </tbody>
