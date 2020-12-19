@@ -191,6 +191,22 @@ class ProjectController extends Controller
         return redirect('/teacher/projects/completed')->with('message','Marks Given Successfully');
     }
 
+    public function reportRepeat(Request $request){
+
+        $report = ProjectSubmission::find($request->id);
+        $report->repeat_reason = $request->repeat_reason;
+        $report->status = 2;
+        $report->save();
+
+
+        $report2 = Project::where('group_id',$report->group_id)->first();
+        $report2->project_submission = 0;
+        $report2->save();
+
+
+        return redirect('/teacher/projects/ongoing')->with('message','Submission Repeated Successfully');
+    }
+
     public function allProjects()
     {
         $projects = DB::table('projects')

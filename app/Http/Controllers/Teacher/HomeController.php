@@ -64,7 +64,7 @@ class HomeController extends Controller
             ->get();*/
 
         return view('teacher.teachers.teacher-list',[
-            'teachers' => Teacher::all()
+            'teachers' => Teacher::orderby('teacher_position')->get()
         ]);
     }
 

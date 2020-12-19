@@ -62,6 +62,7 @@ Route::get('/project/task/list', 'Student\TaskController@taskList')->name('stude
 Route::get('/project/submit', 'Student\TaskController@projectSubmission')->name('project-submission');
 Route::post('/project/submit', 'Student\TaskController@submitProject')->name('submit-project');
 Route::get('/submission/status', 'Student\TaskController@submissionStatus')->name('submission-status');
+Route::get('/submission/repeat-reason/{id}', 'Student\TaskController@repeatReason')->name('submission-repeat-reason');
 
 
 //All Projects Search
@@ -104,6 +105,8 @@ Route::post('/cancel/proposal/','Teacher\ProposalController@cancelProposal')->na
 Route::get('/teacher/projects/ongoing','Teacher\ProjectController@ongoingProjects')->name('teacher-ongoing-projects');
 Route::get('/teacher/project/task/{id}','Teacher\TaskController@projectTask')->name('project-task');
 Route::get('/teacher/task/images/{id}','Teacher\TaskController@taskImages')->name('task-images');
+Route::get('/task-pdf/download/{id}','Teacher\TaskController@reportDownload')->name('task-pdf-download');
+
 Route::post('/teacher/task/mark/','Teacher\TaskController@taskMark')->name('task-mark');
 Route::post('/teacher/project/completed','Teacher\ProjectController@projectCompleted')->name('project-completed');
 Route::post('/teacher/project/drop','Teacher\ProjectController@projectDrop')->name('cancel-project');
@@ -117,6 +120,7 @@ Route::get('/teacher/final-submission/{id}','Teacher\ProjectController@finalSubm
 Route::get('/final-report/download/{id}','Teacher\ProjectController@finalReportDownload')->name('final-report-download');
 Route::get('/project-folder/download/{id}','Teacher\ProjectController@projectFolderDownload')->name('project-folder-download');
 Route::post('/teacher/final-report/mark/','Teacher\ProjectController@finalReportMark')->name('final-report-mark');
+Route::post('/teacher/final-report/repeat/','Teacher\ProjectController@reportRepeat')->name('final-report-repeat');
 
 
 

@@ -36,7 +36,7 @@
                                 @elseif($s->status==1)
                                     Accepted
                                 @else
-                                    Repeated
+                                    Repeated <a href="{{route('submission-repeat-reason',['id'=>$s->id])}}" class="btn btn-warning">Reason</a>
                                 @endif
                             </td>
 

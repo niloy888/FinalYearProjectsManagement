@@ -43,8 +43,10 @@
 
                             <td>
 
+                                @if($task->task_pdf)
+                                <a href="{{route('task-pdf-download',['id'=>$task->id])}}" class="btn btn-warning">PDF</a>
+                                @endif
                                 <a href="{{route('task-images',['id'=>$task->id])}}" class="btn btn-primary">View Images</a>
-
                                 @if($task->task_mark==null)
                                 <a href="#" class="btn btn-success modalButton"
                                    data-report-id={{$task->id}}  data-toggle="modal"

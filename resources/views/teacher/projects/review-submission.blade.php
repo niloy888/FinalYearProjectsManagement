@@ -33,6 +33,11 @@
                                 <a href="#" class="btn btn-success modalButton"
                                    data-report-id={{$submission->id}}  data-toggle="modal"
                                    data-target="#exampleModal">Give Marks</a>
+
+                                <a href="#" class="btn btn-danger modalButton2"
+                                   data-report-id2={{$submission->id}}  data-toggle="modal"
+                                   data-target="#exampleModal2">Repeat</a>
+
                             </td>
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -66,6 +71,37 @@
                                 </div>
                             </div>
 
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form action="{{route('final-report-repeat')}}" method="post">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Are you sure to
+                                                    proceed?</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @csrf
+                                                <input type="hidden" id="reportIdInput2" name="id">
+
+                                                <input type="text" name="repeat_reason" placeholder="Enter reason">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Save changes
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
 
 
                         </tr>
@@ -80,6 +116,12 @@
         $('.modalButton').click(function () {
             var reportId = $(this).attr('data-report-id');
             $("#reportIdInput").val(reportId);
+
+        });
+
+        $('.modalButton2').click(function () {
+            var reportId = $(this).attr('data-report-id2');
+            $("#reportIdInput2").val(reportId);
 
         });
 

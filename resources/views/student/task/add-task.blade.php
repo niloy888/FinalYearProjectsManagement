@@ -27,6 +27,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-md-3">Task Pdf</label>
+                        <div class="col-md-6">
+                            <input type="file" name="task_pdf" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label col-md-3">Github Link</label>
                         <div class="col-md-6">
                             <input type="url" name="github_link">

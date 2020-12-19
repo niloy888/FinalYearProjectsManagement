@@ -56,7 +56,7 @@ class ProposalController extends Controller
             ->join('groups','groups.group_id','=','proposals.group_id')
             ->join('students','groups.student_id','=','students.student_id')
             ->where('proposals.id',$id)
-            ->select('proposals.*','students.student_name','students.student_id','students.batch')
+            ->select('proposals.*','students.student_name','students.student_id','students.batch','students.student_email','students.student_contact_number')
             ->get();
 
 

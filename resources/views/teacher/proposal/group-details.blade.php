@@ -25,6 +25,8 @@
                         <th>Student ID</th>
                         <th>Student Name</th>
                         <th>Batch</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
 
                     </tr>
                     </thead>
@@ -35,6 +37,8 @@
                             <td>{{$detail->student_id}}</td>
                             <td>{{$detail->student_name}}</td>
                             <td>{{$detail->batch}}</td>
+                            <td>{{$detail->student_email}}</td>
+                            <td>{{$detail->student_contact_number}}</td>
 
 
                         </tr>
