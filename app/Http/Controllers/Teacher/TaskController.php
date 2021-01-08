@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Model\Project;
+use App\Model\Student;
 use App\Model\Task;
 use App\Model\TaskImage;
 use Illuminate\Http\Request;
@@ -41,5 +43,26 @@ class TaskController extends Controller
         $task->task_mark = $request->task_mark;
         $task->save();
         return redirect()->back()->with('message','Marks Given Successfully');
+    }
+
+    public function changeGroupRequest($id){
+        $project = Project::where('group_id',$id)->first();
+        $students = Student::where('group_id',$project->group_id)->get();
+        return view('teacher.projects.group-change-request',compact('students'));
+    }
+
+    public function removeStudent($id){
+        $student = Student::find($id);
+
+        $project = Project::where('group_id',$student->group_id)->first();
+        $project->group_change = null;
+        $project->save();
+
+        $student->group_id = null;
+        $student->save();
+        session()->flash('message','Student removed successfully');
+        return redirect()->back();
+
+
     }
 }

@@ -61,7 +61,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        @if(empty($project_id))
+        @if(empty($project_id) || $project_id->project_status==2)
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#enroll_project" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
@@ -72,8 +72,10 @@
                     @if(empty($group_id->group_id))
                     <a class="collapse-item" href="{{route('create-group')}}">Create a Group</a>
                     @endif
+                    @if($group_id->group_id)
                     <a class="collapse-item" href="{{route('category-selection')}}">Send Proposal</a>
                     <a class="collapse-item" href="{{route('proposal-status')}}">Proposal Status</a>
+                    @endif
                 </div>
             </div>
         </li>
@@ -88,6 +90,7 @@
                 <div id="final_year_projects" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('project-status')}}">Project Status</a>
+                        <a class="collapse-item" href="{{route('group-info')}}">Group Info</a>
                         <a class="collapse-item" href="{{route('student-task-add')}}">Add Project Task</a>
                         <a class="collapse-item" href="{{route('student-task-list')}}">My Tasks</a>
                         <a class="collapse-item" href="{{route('project-submission')}}">Submit Project</a>

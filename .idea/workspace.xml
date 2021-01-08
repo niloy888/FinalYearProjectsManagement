@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2d8c39f9-af44-486f-8afe-fad88ecdbf03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/ProposalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/ProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/ProposalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/add-task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/add-task.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/submission-status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/submission-status.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/projects/review-submission.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/projects/review-submission.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/projects/task-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/projects/task-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/proposal/group-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/proposal/group-details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/project-status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/project-status.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/projects/ongoing-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/projects/ongoing-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/proposal/project-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/proposal/project-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -135,7 +133,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GadgetoyEcommerce" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
@@ -179,7 +177,9 @@
       <workItem from="1605457864086" duration="6394000" />
       <workItem from="1606286701496" duration="5740000" />
       <workItem from="1608358263014" duration="6693000" />
-      <workItem from="1608392936483" duration="7224000" />
+      <workItem from="1608392936483" duration="7827000" />
+      <workItem from="1609915594376" duration="653000" />
+      <workItem from="1610015417259" duration="20966000" />
     </task>
     <servers />
   </component>

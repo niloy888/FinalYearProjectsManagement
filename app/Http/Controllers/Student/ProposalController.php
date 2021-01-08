@@ -51,27 +51,49 @@ class ProposalController extends Controller
     public function submitProposal(Request $request){
 
         $request->validate([
-            'report' => 'required|mimes:pdf,xlx,csv',
+            'report' => 'mimes:pdf,xlx,csv',
         ]);
 
-        $fileName = time().'.'.$request->report->extension();
-        $request->report->move(public_path('reports'), $fileName);
+        if ($request->report){
+
+            $fileName = time().'.'.$request->report->extension();
+            $request->report->move(public_path('reports'), $fileName);
 
 
-        $student = Student::where('id',$request->student_id)->first();
+            $student = Student::where('id',$request->student_id)->first();
 
 
-        $proposal = new Proposal();
-        $proposal->group_id          = $student->group_id;
-        $proposal->category_id       = $request->category_id;
-        $proposal->teacher_id        = $request->teacher_id;
-        $proposal->project_name      = $request->project_name;
-        $proposal->short_description = $request->short_description;
-        $proposal->proposal_status   = 0;
-        $proposal->message           = $request->message;
-        $proposal->report            = $fileName;
+            $proposal = new Proposal();
+            $proposal->group_id          = $student->group_id;
+            $proposal->category_id       = $request->category_id;
+            $proposal->teacher_id        = $request->teacher_id;
+            $proposal->project_name      = $request->project_name;
+            $proposal->short_description = $request->short_description;
+            $proposal->proposal_status   = 0;
+            $proposal->message           = $request->message;
+            $proposal->report            = $fileName;
 
-        $proposal->save();
+            $proposal->save();
+
+        }
+
+        else{
+            $student = Student::where('id',$request->student_id)->first();
+
+
+            $proposal = new Proposal();
+            $proposal->group_id          = $student->group_id;
+            $proposal->category_id       = $request->category_id;
+            $proposal->teacher_id        = $request->teacher_id;
+            $proposal->project_name      = $request->project_name;
+            $proposal->short_description = $request->short_description;
+            $proposal->proposal_status   = 0;
+            $proposal->message           = $request->message;
+
+            $proposal->save();
+        }
+
+
 
         //$proposal = Proposal::orderBy('id','desc')->first();
 

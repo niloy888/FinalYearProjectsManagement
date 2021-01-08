@@ -64,6 +64,10 @@
                                 <a href="{{route('final-submission',['id'=>$project->group_id])}}" class="btn btn-warning">Submission</a>
                                 @endif
 
+                                @if($project->group_change==1)
+                                    <a href="{{route('group-change-request',['id'=>$project->group_id])}}" class="btn btn-info">Group Change</a>
+                                @endif
+
                                 <form id="cancelProject{{$project->id}}"
                                       action="{{route('cancel-project')}}" method="post">
                                     @csrf

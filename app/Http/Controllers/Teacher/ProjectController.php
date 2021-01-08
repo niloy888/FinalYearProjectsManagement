@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Model\Project;
 use App\Model\ProjectSubmission;
 use App\Model\Proposal;
+use App\Model\Student;
 use App\Model\Task;
 use App\Model\Teacher;
 use Carbon\Carbon;
@@ -65,7 +66,22 @@ class ProjectController extends Controller
         $project = Project::find($request->id);
         $project->marks = 0;
         $project->project_status = 2;
+        $project->deadline= Carbon::now();
+
+        $students = Student::where('group_id',$project->group_id)->get();
+
+        foreach ($students as $student){
+            $student->group_id = null;
+            $student->save();
+        }
+
+
+
         $project->save();
+
+
+
+
 
         $teacher = Teacher::find($project->teacher_id);
         $teacher->decrement("slots");
@@ -76,7 +92,7 @@ class ProjectController extends Controller
 
         $teacher->save();
 
-        return redirect()->back()->with('message','Project Dropped Successfully!!');
+        return redirect('teacher/projects/dropped')->with('message','Project Dropped Successfully!!');
 
     }
 
@@ -181,7 +197,8 @@ class ProjectController extends Controller
 
         foreach ($marks as $mark){
             $sum = $sum+$mark->task_mark;
-            $total_mark = ($sum+$report->report_marks)/$t;
+            //$total_mark = ($sum+$report->report_marks)/$t;
+            $total_mark = $sum+$report->report_marks;
 
             $project->marks=$total_mark;
         }

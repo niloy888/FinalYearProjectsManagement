@@ -43,6 +43,10 @@ Route::get('/group/create', 'Student\GroupController@createGroup')->name('create
 Route::post('/group/submit', 'Student\GroupController@submitGroup')->name('submit-group');
 
 
+Route::get('/group/info', 'Student\GroupController@groupInfo')->name('group-info');
+Route::get('/group/change', 'Student\GroupController@groupChange')->name('group-change');
+
+
 //Sending proposal
 Route::get('/category/selection', 'Student\ProposalController@categorySelection')->name('category-selection');
 Route::get('/teacher/selection/{id}', 'Student\ProposalController@teacherSelection')->name('teacher-selection');
@@ -106,6 +110,10 @@ Route::get('/teacher/projects/ongoing','Teacher\ProjectController@ongoingProject
 Route::get('/teacher/project/task/{id}','Teacher\TaskController@projectTask')->name('project-task');
 Route::get('/teacher/task/images/{id}','Teacher\TaskController@taskImages')->name('task-images');
 Route::get('/task-pdf/download/{id}','Teacher\TaskController@reportDownload')->name('task-pdf-download');
+
+Route::get('/request/change-group/{id}','Teacher\TaskController@changeGroupRequest')->name('group-change-request');
+Route::get('/remove/student/{id}','Teacher\TaskController@removeStudent')->name('remove-student');
+
 
 Route::post('/teacher/task/mark/','Teacher\TaskController@taskMark')->name('task-mark');
 Route::post('/teacher/project/completed','Teacher\ProjectController@projectCompleted')->name('project-completed');

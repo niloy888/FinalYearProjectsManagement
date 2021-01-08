@@ -35,7 +35,9 @@
                             <td>{{$detail->project_name}}</td>
                             <td>{{$detail->short_description}}</td>
                             <td>
+                                @if($detail->report!=null)
                                 <a href="{{route('teacher-report-download',['id'=>$detail->id])}}" class="btn btn-sm btn-success">Download</a>
+                                @endif
                             </td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-success"
