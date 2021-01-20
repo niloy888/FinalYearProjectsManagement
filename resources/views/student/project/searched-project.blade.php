@@ -36,6 +36,8 @@
                         <th>Category Name</th>
                         <th>Starting Date</th>
                         <th>Ending Date</th>
+                        <th>Final Report</th>
+
                     </tr>
                     </thead>
 
@@ -49,7 +51,7 @@
                             <td>{{$project->category_name}}</td>
                             <td>{{$project->created_at}}</td>
                             <td>{{$project->updated_at}}</td>
-
+                            <td><a href="{{route('final-report-view',['id'=>$project->group_id])}}">{{$project->final_report}}</a></td>
 
                         </tr>
                     @endforeach

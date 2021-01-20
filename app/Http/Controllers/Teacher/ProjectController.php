@@ -229,8 +229,9 @@ class ProjectController extends Controller
         $projects = DB::table('projects')
             ->join('categories', 'categories.id', '=', 'projects.category_id')
             ->join('teachers', 'teachers.id', '=', 'projects.teacher_id')
+            ->join('project_submissions', 'project_submissions.group_id', '=', 'projects.group_id')
             ->where('projects.project_status', 1)
-            ->select('projects.*',  'categories.category_name', 'teachers.teacher_name')
+            ->select('projects.*',  'categories.category_name', 'teachers.teacher_name','project_submissions.final_report')
             ->get();
 
 
@@ -244,8 +245,9 @@ class ProjectController extends Controller
         $projects = DB::table('projects')
             ->join('categories', 'categories.id', '=', 'projects.category_id')
             ->join('teachers', 'teachers.id', '=', 'projects.teacher_id')
+            ->join('project_submissions', 'project_submissions.group_id', '=', 'projects.group_id')
             ->where('projects.project_name','=' ,$request->project_name)
-            ->select('projects.*',  'categories.category_name', 'teachers.teacher_name')
+            ->select('projects.*',  'categories.category_name', 'teachers.teacher_name','project_submissions.final_report')
             ->get();
 
 

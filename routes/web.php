@@ -78,6 +78,8 @@ Route::post('/final-project','Student\ProjectController@searchedProject')->name(
 
 Route::post('/google-search','Student\ProjectController@googleSearch')->name('google-search');
 
+Route::get('/report/view/{id}', 'Student\ProjectController@viewReport')->name('final-report-view');
+
 
 //Teacher-------------------------------------------------------------------------------------------------------
 Route::get('/teacher/login', 'Teacher\AuthController@login')->name('teacher-login');
